@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:news_app/Components/NavigationBar.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrendingCard.dart';
 
@@ -8,6 +9,8 @@ class Homepage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: MyBottomNav(),
+
       appBar: AppBar(
         title: Text(
           "NEWSEEKERS",
