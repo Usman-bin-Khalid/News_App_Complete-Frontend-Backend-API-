@@ -6,6 +6,7 @@ class Trendingcard extends StatelessWidget {
   final String time;
   final String title;
   final String author;
+  final VoidCallback onTap;
 
   const Trendingcard({
     super.key,
@@ -14,67 +15,71 @@ class Trendingcard extends StatelessWidget {
     required this.time,
     required this.title,
     required this.author,
+    required this.onTap,
   });
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(5),
-      margin: EdgeInsets.only(right: 10),
-      width: 280,
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(20),
-        color: Theme.of(context).colorScheme.primaryContainer,
-      ),
-      child: Column(
-        children: [
-          Container(
-            height: 200,
+    return InkWell(
+      onTap: onTap,
+      child: Container(
+        padding: EdgeInsets.all(5),
+        margin: EdgeInsets.only(right: 10),
+        width: 280,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: Theme.of(context).colorScheme.primaryContainer,
+        ),
+        child: Column(
+          children: [
+            Container(
+              height: 200,
 
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Theme.of(context).colorScheme.background,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Theme.of(context).colorScheme.background,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20),
+                child: Image.network(fit: BoxFit.fill, imageUrl),
+              ),
             ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Image.network(fit: BoxFit.fill, imageUrl),
+            SizedBox(height: 10),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("$tag", style: Theme.of(context).textTheme.labelSmall),
+                Text("$time", style: Theme.of(context).textTheme.labelSmall),
+              ],
             ),
-          ),
-          SizedBox(height: 10),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text("$tag", style: Theme.of(context).textTheme.labelSmall),
-              Text("$time", style: Theme.of(context).textTheme.labelSmall),
-            ],
-          ),
-          SizedBox(height: 5),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Flexible(
-                child: Text(
-                  maxLines: 2,
-                  "$title",
-                  style: TextStyle(fontSize: 20),
+            SizedBox(height: 5),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Flexible(
+                  child: Text(
+                    maxLines: 2,
+                    "$title",
+                    style: TextStyle(fontSize: 20),
+                  ),
                 ),
-              ),
-            ],
-          ),
-          SizedBox(height: 10),
-          Row(
-            children: [
-              SizedBox(width: 10),
-              CircleAvatar(
-                radius: 15,
-                backgroundColor: Theme.of(context).colorScheme.primary,
-              ),
-              SizedBox(width: 10),
-              Text("$author"),
-            ],
-          ),
-          SizedBox(height: 10),
-        ],
+              ],
+            ),
+            SizedBox(height: 10),
+            Row(
+              children: [
+                SizedBox(width: 10),
+                CircleAvatar(
+                  radius: 15,
+                  backgroundColor: Theme.of(context).colorScheme.primary,
+                ),
+                SizedBox(width: 10),
+                Text("$author"),
+              ],
+            ),
+            SizedBox(height: 10),
+          ],
+        ),
       ),
     );
   }
