@@ -26,54 +26,55 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 40),
+              SizedBox(height: 20),
+
+              // Row(
+              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              //   children: [
+              //     Container(
+              //       width: 50,
+              //       height: 50,
+              //       decoration: BoxDecoration(
+              //         borderRadius: BorderRadius.circular(100),
+              //       ),
+              //       child: Icon(
+              //         Icons.dashboard,
+              //         color: Theme.of(context).colorScheme.primaryContainer,
+              //       ),
+              //     ),
+              //     Text(
+              //       "NEWS APP",
+              //       style: TextStyle(
+              //         fontSize: 25,
+              //         fontFamily: 'Poppins',
+              //         fontWeight: FontWeight.w600,
+              //         letterSpacing: 1.5,
+              //       ),
+              //     ),
+              //     InkWell(
+              //       onTap: () {
+              //         newsController.getTrendingNews();
+              //       },
+              //       child: Container(
+              //         width: 50,
+              //         height: 50,
+              //         decoration: BoxDecoration(
+              //           borderRadius: BorderRadius.circular(100),
+              //         ),
+              //         child: Icon(
+              //           Icons.person,
+              //           color: Theme.of(context).colorScheme.primaryContainer,
+              //         ),
+              //       ),
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Icon(
-                      Icons.dashboard,
-                      color: Theme.of(context).colorScheme.primaryContainer,
-                    ),
-                  ),
                   Text(
-                    "NEWS APP",
-                    style: TextStyle(
-                      fontSize: 25,
-                      fontFamily: 'Poppins',
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: 1.5,
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {
-                      newsController.getTrendingNews();
-                    },
-                    child: Container(
-                      width: 50,
-                      height: 50,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(100),
-                      ),
-                      child: Icon(
-                        Icons.person,
-                        color: Theme.of(context).colorScheme.primaryContainer,
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-              SizedBox(height: 40),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text(
-                    "Hottest News",
+                    "Trending News",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
                   Text(
@@ -86,27 +87,30 @@ class HomePage extends StatelessWidget {
               Obx(
                 () => SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
-                  child: Row(
-                    children: newsController.trendingNewsList
-                        .map(
-                          (e) => Trendingcard(
-                            onTap: () {
-                              Get.to(NewsDetailsPage(news: e));
-                            },
+                  child: newsController.isTrendingNewsLoading.value
+                      ? CircularProgressIndicator()
+                      : Row(
+                          children: newsController.trendingNewsList
+                              .map(
+                                (e) => Trendingcard(
+                                  onTap: () {
+                                    Get.to(NewsDetailsPage(news: e));
+                                  },
 
-                            imageUrl:
-                                e.urlToImage ??
-                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
-                            title: e.title ?? 'No Title',
-                            tag: e.source?.name ?? 'Trending',
-                            time: e.publishedAt!,
-                            author: e.author ?? 'Unknown Author',
-                          ),
-                        )
-                        .toList(),
-                  ),
+                                  imageUrl:
+                                      e.urlToImage ??
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                  title: e.title ?? 'No Title',
+                                  tag: e.source?.name ?? 'Trending',
+                                  time: e.publishedAt!,
+                                  author: e.author ?? 'Unknown Author',
+                                ),
+                              )
+                              .toList(),
+                        ),
                 ),
               ),
+
               SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -123,26 +127,152 @@ class HomePage extends StatelessWidget {
               ),
               SizedBox(height: 20),
               Obx(
-                () => Column(
-                  children: newsController.newsForYouList
-                      .map(
-                        (e) => NewsTile(
-                          onTap: () {
-                            Get.to(NewsDetailsPage(news: e));
-                          },
-                          imageUrl:
-                              e.urlToImage ??
-                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                () => newsController.isForNewsLoading.value
+                    ? CircularProgressIndicator()
+                    : Column(
+                        children: newsController.newsForYou5
+                            .map(
+                              (e) => NewsTile(
+                                onTap: () {
+                                  Get.to(NewsDetailsPage(news: e));
+                                },
+                                imageUrl:
+                                    e.urlToImage ??
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
 
-                          title: e.title ?? 'No Title',
+                                title: e.title ?? 'No Title',
 
-                          time: e.publishedAt!,
-                          author: e.author ?? 'Unknown Author',
+                                time: e.publishedAt!,
+                                author: e.author ?? 'Unknown Author',
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
+
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Apple News",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Obx(
+                () => newsController.isAppleNewsLoading.value
+                    ? CircularProgressIndicator()
+                    : Column(
+                        children: newsController.apple5News
+                            .map(
+                              (e) => NewsTile(
+                                onTap: () {
+                                  Get.to(NewsDetailsPage(news: e));
+                                },
+                                imageUrl:
+                                    e.urlToImage ??
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+
+                                title: e.title ?? 'No Title',
+
+                                time: e.publishedAt!,
+                                author: e.author ?? 'Unknown Author',
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
+
+              SizedBox(height: 20),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Business News",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Obx(
+                () => SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: newsController.isBusinessNewsLoading.value
+                      ? CircularProgressIndicator()
+                      : Row(
+                          children: newsController.business5News
+                              .map(
+                                (e) => Trendingcard(
+                                  onTap: () {
+                                    Get.to(NewsDetailsPage(news: e));
+                                  },
+
+                                  imageUrl:
+                                      e.urlToImage ??
+                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                  title: e.title ?? 'No Title',
+                                  tag: e.source?.name ?? 'Trending',
+                                  time: e.publishedAt!,
+                                  author: e.author ?? 'Unknown Author',
+                                ),
+                              )
+                              .toList(),
                         ),
-                      )
-                      .toList(),
                 ),
               ),
+                          SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    "Wall Street News",
+                    style: Theme.of(context).textTheme.bodyLarge,
+                  ),
+                  Text(
+                    "See All",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ],
+              ),
+              SizedBox(height: 20),
+              Obx(
+                () => newsController.isWallStreetNewsLoading.value
+                    ? CircularProgressIndicator()
+                    : Column(
+                        children: newsController.wallStreet5News
+                            .map(
+                              (e) => NewsTile(
+                                onTap: () {
+                                  Get.to(NewsDetailsPage(news: e));
+                                },
+                                imageUrl:
+                                    e.urlToImage ??
+                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+
+                                title: e.title ?? 'No Title',
+
+                                time: e.publishedAt!,
+                                author: e.author ?? 'Unknown Author',
+                              ),
+                            )
+                            .toList(),
+                      ),
+              ),
+
+              
+
+            
             ],
           ),
         ),

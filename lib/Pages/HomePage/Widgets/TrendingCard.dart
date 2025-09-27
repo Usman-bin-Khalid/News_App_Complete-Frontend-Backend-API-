@@ -48,8 +48,22 @@ class Trendingcard extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("$tag", style: Theme.of(context).textTheme.labelSmall),
-                Text("$time", style: Theme.of(context).textTheme.labelSmall),
+                Flexible(
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "$tag",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ),
+                Flexible(
+                  child: Text(
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    "$time",
+                    style: Theme.of(context).textTheme.labelSmall,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 5),

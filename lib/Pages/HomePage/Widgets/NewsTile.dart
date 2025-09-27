@@ -10,7 +10,7 @@ class NewsTile extends StatelessWidget {
   const NewsTile({
     super.key,
     required this.imageUrl,
-    
+
     required this.time,
     required this.title,
     required this.author,
@@ -56,7 +56,13 @@ class NewsTile extends StatelessWidget {
                         backgroundColor: Theme.of(context).colorScheme.primary,
                       ),
                       SizedBox(width: 15),
-                      Text('$author'),
+                      Flexible(
+                        child: Text(
+                          '$author',
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
                     ],
                   ),
                   SizedBox(height: 15),
