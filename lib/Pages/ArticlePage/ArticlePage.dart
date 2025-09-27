@@ -22,7 +22,7 @@ class ArticlePage extends StatelessWidget {
                 children: [
                   NewsTile(
                     onTap: () {
-                      Get.to(NewsDetailsPage());
+                      // Get.to(NewsDetailsPage(news: e,));
                     },
                     imageUrl:
                         'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
@@ -33,7 +33,7 @@ class ArticlePage extends StatelessWidget {
                   ),
                   NewsTile(
                     onTap: () {
-                      Get.to(NewsDetailsPage());
+                      // Get.to(NewsDetailsPage());
                     },
                     imageUrl:
                         'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
@@ -44,7 +44,7 @@ class ArticlePage extends StatelessWidget {
                   ),
                   NewsTile(
                     onTap: () {
-                      Get.to(NewsDetailsPage());
+                      // Get.to(NewsDetailsPage());
                     },
                     imageUrl:
                         'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
@@ -55,7 +55,7 @@ class ArticlePage extends StatelessWidget {
                   ),
                   NewsTile(
                     onTap: () {
-                      Get.to(NewsDetailsPage());
+               
                     },
                     imageUrl:
                         'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',

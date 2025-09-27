@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:news_app/Components/NavigationBar.dart';
+import 'package:news_app/Controller/NewsController.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrendingCard.dart';
 import 'package:news_app/Pages/NewsDetails/NewsDetails.dart';
@@ -11,6 +12,8 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    NewsController newsController = Get.put(NewsController());
+
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -47,15 +50,20 @@ class HomePage extends StatelessWidget {
                       letterSpacing: 1.5,
                     ),
                   ),
-                  Container(
-                    width: 50,
-                    height: 50,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(100),
-                    ),
-                    child: Icon(
-                      Icons.person,
-                      color: Theme.of(context).colorScheme.primaryContainer,
+                  InkWell(
+                    onTap: () {
+                      newsController.getTrendingNews();
+                    },
+                    child: Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(100),
+                      ),
+                      child: Icon(
+                        Icons.person,
+                        color: Theme.of(context).colorScheme.primaryContainer,
+                      ),
                     ),
                   ),
                 ],
@@ -75,166 +83,28 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              SingleChildScrollView(
-                scrollDirection: Axis.horizontal,
-                child: Row(
-                  children: [
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                      title:
-                          'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                      time: '3 Day ago',
-                      author: 'Hafsa Adil',
-                      tag: 'Trending no 1',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        NewsDetailsPage();
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                    Trendingcard(
-                      onTap: () {
-                        Get.to(NewsDetailsPage());
-                      },
-                      imageUrl:
-                          'https://www.simplilearn.com/ice9/free_resources_article_thumb/Technology_Trends.jpg',
-                      title: 'Save Water Save life is a best News',
-                      tag: 'Trending no 1',
-                      time: '2 Day ago',
-                      author: 'Usman Khalid',
-                    ),
-                  ],
+              Obx(
+                () => SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  child: Row(
+                    children: newsController.trendingNewsList
+                        .map(
+                          (e) => Trendingcard(
+                            onTap: () {
+                              Get.to(NewsDetailsPage(news: e));
+                            },
+
+                            imageUrl:
+                                e.urlToImage ??
+                                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                            title: e.title ?? 'No Title',
+                            tag: e.source?.name ?? 'Trending',
+                            time: e.publishedAt!,
+                            author: e.author ?? 'Unknown Author',
+                          ),
+                        )
+                        .toList(),
+                  ),
                 ),
               ),
               SizedBox(height: 20),
@@ -252,99 +122,26 @@ class HomePage extends StatelessWidget {
                 ],
               ),
               SizedBox(height: 20),
-              Column(
-                children: [
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
+              Obx(
+                () => Column(
+                  children: newsController.newsForYouList
+                      .map(
+                        (e) => NewsTile(
+                          onTap: () {
+                            Get.to(NewsDetailsPage(news: e));
+                          },
+                          imageUrl:
+                              e.urlToImage ??
+                              'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
 
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
+                          title: e.title ?? 'No Title',
 
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
-                  NewsTile(
-                    onTap: () {
-                      Get.to(NewsDetailsPage());
-                    },
-                    imageUrl:
-                        'https://www.aljazeera.com/wp-content/uploads/2025/09/AP25257522906617-1758376325.jpg?resize=770%2C513&quality=80',
-                    title:
-                        'India and Pakistan are keen to avoid controversy ahead of their crucial Super Fours',
-                    time: '3 Day ago',
-                    author: 'Hafsa Adil',
-                  ),
-                ],
+                          time: e.publishedAt!,
+                          author: e.author ?? 'Unknown Author',
+                        ),
+                      )
+                      .toList(),
+                ),
               ),
             ],
           ),

@@ -74,7 +74,13 @@ class Trendingcard extends StatelessWidget {
                   backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
                 SizedBox(width: 10),
-                Text("$author"),
+                Flexible(
+                  child: Text(
+                    "$author",
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ],
             ),
             SizedBox(height: 10),
