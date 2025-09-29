@@ -101,6 +101,7 @@ class Trendingcard extends StatelessWidget {
           ],
         ),
       ),
+   
     );
   }
 }
