@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:news_app/Components/NavigationBar.dart';
+import 'package:news_app/Components/NewsTileLoading.dart';
+import 'package:news_app/Components/TrendingLoadingCard.dart';
 import 'package:news_app/Controller/NewsController.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrendingCard.dart';
@@ -88,7 +90,13 @@ class HomePage extends StatelessWidget {
                 () => SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: newsController.isTrendingNewsLoading.value
-                      ? CircularProgressIndicator()
+                      ? Row(
+                          children: [
+                            Trendingloadingcard(),
+                            Trendingloadingcard(),
+                            Trendingloadingcard(),
+                          ],
+                        )
                       : Row(
                           children: newsController.trendingNewsList
                               .map(
@@ -128,7 +136,13 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               Obx(
                 () => newsController.isForNewsLoading.value
-                    ? CircularProgressIndicator()
+                    ? Column(
+                        children: [
+                          NewsTileLoading(),
+                          NewsTileLoading(),
+                          NewsTileLoading(),
+                        ],
+                      )
                     : Column(
                         children: newsController.newsForYou5
                             .map(
@@ -167,7 +181,13 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               Obx(
                 () => newsController.isAppleNewsLoading.value
-                    ? CircularProgressIndicator()
+                    ? Column(
+                        children: [
+                          NewsTileLoading(),
+                          NewsTileLoading(),
+                          NewsTileLoading(),
+                        ],
+                      )
                     : Column(
                         children: newsController.apple5News
                             .map(
@@ -209,7 +229,13 @@ class HomePage extends StatelessWidget {
                 () => SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: newsController.isBusinessNewsLoading.value
-                      ? CircularProgressIndicator()
+                      ? Row(
+                          children: [
+                            Trendingloadingcard(),
+                            Trendingloadingcard(),
+                            Trendingloadingcard(),
+                          ],
+                        )
                       : Row(
                           children: newsController.business5News
                               .map(
@@ -231,7 +257,7 @@ class HomePage extends StatelessWidget {
                         ),
                 ),
               ),
-                          SizedBox(height: 20),
+              SizedBox(height: 20),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -248,7 +274,13 @@ class HomePage extends StatelessWidget {
               SizedBox(height: 20),
               Obx(
                 () => newsController.isWallStreetNewsLoading.value
-                    ? CircularProgressIndicator()
+                    ? Column(
+                        children: [
+                          NewsTileLoading(),
+                          NewsTileLoading(),
+                          NewsTileLoading(),
+                        ],
+                      )
                     : Column(
                         children: newsController.wallStreet5News
                             .map(
@@ -269,10 +301,6 @@ class HomePage extends StatelessWidget {
                             .toList(),
                       ),
               ),
-
-              
-
-            
             ],
           ),
         ),

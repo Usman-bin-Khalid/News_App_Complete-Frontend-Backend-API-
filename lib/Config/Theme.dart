@@ -9,6 +9,7 @@ var lightTheme = ThemeData(
       enabledBorder: InputBorder.none,
       prefixIconColor: lightLableColor,
       labelStyle: TextStyle(
+        
         fontFamily: "Poppins",
         fontSize: 15,
         color: lightFontColor,
