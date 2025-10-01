@@ -6,5 +6,5 @@ import 'package:news_app/Pages/Profile/ProfilePage.dart';
 
 class BottomNavController extends GetxController {
   RxInt index = 0.obs;
-  var pages = [HomePage(), ArticlePage(), ProfilePage()];
+  var pages = [HomePage(), ArticlePage()];
 }

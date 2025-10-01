@@ -6,6 +6,7 @@ class Trendingcard extends StatelessWidget {
   final String time;
   final String title;
   final String author;
+  final String name;
   final VoidCallback onTap;
 
   const Trendingcard({
@@ -16,6 +17,7 @@ class Trendingcard extends StatelessWidget {
     required this.title,
     required this.author,
     required this.onTap,
+    required this.name,
   });
 
   @override
@@ -41,7 +43,18 @@ class Trendingcard extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(fit: BoxFit.fill, imageUrl),
+                child: Image.network(
+                  fit: BoxFit.fill,
+                  imageUrl,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.network(
+                      'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.fill,
+                    );
+                  },
+                ),
               ),
             ),
             SizedBox(height: 10),
@@ -84,6 +97,7 @@ class Trendingcard extends StatelessWidget {
               children: [
                 SizedBox(width: 10),
                 CircleAvatar(
+                  child: Text("$name"),
                   radius: 15,
                   backgroundColor: Theme.of(context).colorScheme.primary,
                 ),
@@ -101,7 +115,6 @@ class Trendingcard extends StatelessWidget {
           ],
         ),
       ),
-   
     );
   }
 }

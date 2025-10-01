@@ -32,6 +32,22 @@ class NewsController extends GetxController {
     getAppleNews();
     getBusinessNews();
     getWallStreetNews();
+    // Listen to TTS events
+    flutterTts.setStartHandler(() {
+      isSpeaking.value = true;
+    });
+
+    flutterTts.setCompletionHandler(() {
+      isSpeaking.value = false;
+    });
+
+    flutterTts.setCancelHandler(() {
+      isSpeaking.value = false;
+    });
+
+    flutterTts.setErrorHandler((msg) {
+      isSpeaking.value = false;
+    });
   }
 
   Future<void> getTrendingNews() async {
@@ -194,17 +210,22 @@ class NewsController extends GetxController {
     isForNewsLoading.value = false;
   }
 
+  Future<void> toggleSpeech(String text) async {
+    if (isSpeaking.value) {
+      await stop();
+    } else {
+      await speak(text);
+    }
+  }
+
   Future<void> speak(String text) async {
-    isSpeaking.value = true;
     await flutterTts.setLanguage("en-US");
     await flutterTts.setPitch(1);
     await flutterTts.setSpeechRate(0.6);
     await flutterTts.speak(text);
-    isSpeaking.value = false;
   }
 
-  void stop() async {
+  Future<void> stop() async {
     await flutterTts.stop();
-    isSpeaking.value = false;
   }
 }

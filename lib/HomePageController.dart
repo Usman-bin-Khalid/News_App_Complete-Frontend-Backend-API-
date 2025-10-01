@@ -11,6 +11,7 @@ class HomePageController extends StatelessWidget {
     BottomNavController controller = Get.put(BottomNavController());
     return Scaffold(
       floatingActionButton: MyBottomNav(),
+
       body: Obx(() => controller.pages[controller.index.value]),
     );
   }

@@ -8,7 +8,7 @@ class SearchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NewsController newsController = Get.put(NewsController());
+    final NewsController newsController = Get.find<NewsController>();
     TextEditingController searchController = TextEditingController();
     return Container(
       padding: EdgeInsets.all(5),
@@ -32,6 +32,7 @@ class SearchWidget extends StatelessWidget {
           Obx(
             () => newsController.isForNewsLoading.value
                 ? Container(
+                    padding: EdgeInsets.all(10),
                     width: 50,
                     height: 50,
                     decoration: BoxDecoration(

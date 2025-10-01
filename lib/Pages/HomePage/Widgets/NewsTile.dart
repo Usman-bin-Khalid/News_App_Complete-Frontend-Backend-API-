@@ -5,6 +5,8 @@ class NewsTile extends StatelessWidget {
   final String time;
   final String title;
   final String author;
+  final String name;
+
   final VoidCallback onTap;
 
   const NewsTile({
@@ -15,6 +17,7 @@ class NewsTile extends StatelessWidget {
     required this.title,
     required this.author,
     required this.onTap,
+    required this.name,
   });
 
   @override
@@ -39,7 +42,18 @@ class NewsTile extends StatelessWidget {
               ),
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20),
-                child: Image.network(fit: BoxFit.fill, imageUrl),
+                child: Image.network(
+                  fit: BoxFit.fill,
+                  imageUrl,
+                  errorBuilder: (context, error, stackTrace) {
+                    return Image.network(
+                      'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
+                      width: double.infinity,
+                      height: 300,
+                      fit: BoxFit.fill,
+                    );
+                  },
+                ),
               ),
             ),
             SizedBox(width: 10),
@@ -53,6 +67,7 @@ class NewsTile extends StatelessWidget {
                     children: [
                       CircleAvatar(
                         radius: 12,
+                        child: Text(name),
                         backgroundColor: Theme.of(context).colorScheme.primary,
                       ),
                       SizedBox(width: 15),
@@ -74,7 +89,6 @@ class NewsTile extends StatelessWidget {
           ],
         ),
       ),
-    
     );
   }
 }

@@ -5,6 +5,7 @@ import 'package:news_app/Components/NavigationBar.dart';
 import 'package:news_app/Components/NewsTileLoading.dart';
 import 'package:news_app/Components/TrendingLoadingCard.dart';
 import 'package:news_app/Controller/NewsController.dart';
+import 'package:news_app/Pages/ArticlePage/ArticlePage.dart';
 import 'package:news_app/Pages/HomePage/Widgets/NewsTile.dart';
 import 'package:news_app/Pages/HomePage/Widgets/TrendingCard.dart';
 import 'package:news_app/Pages/NewsDetails/NewsDetails.dart';
@@ -14,7 +15,7 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    NewsController newsController = Get.put(NewsController());
+    final NewsController newsController = Get.find<NewsController>();
 
     return Scaffold(
       appBar: AppBar(
@@ -28,50 +29,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(height: 20),
+              SizedBox(height: 10),
 
-              // Row(
-              //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              //   children: [
-              //     Container(
-              //       width: 50,
-              //       height: 50,
-              //       decoration: BoxDecoration(
-              //         borderRadius: BorderRadius.circular(100),
-              //       ),
-              //       child: Icon(
-              //         Icons.dashboard,
-              //         color: Theme.of(context).colorScheme.primaryContainer,
-              //       ),
-              //     ),
-              //     Text(
-              //       "NEWS APP",
-              //       style: TextStyle(
-              //         fontSize: 25,
-              //         fontFamily: 'Poppins',
-              //         fontWeight: FontWeight.w600,
-              //         letterSpacing: 1.5,
-              //       ),
-              //     ),
-              //     InkWell(
-              //       onTap: () {
-              //         newsController.getTrendingNews();
-              //       },
-              //       child: Container(
-              //         width: 50,
-              //         height: 50,
-              //         decoration: BoxDecoration(
-              //           borderRadius: BorderRadius.circular(100),
-              //         ),
-              //         child: Icon(
-              //           Icons.person,
-              //           color: Theme.of(context).colorScheme.primaryContainer,
-              //         ),
-              //       ),
-              //     ),
-              //   ],
-              // ),
-              // SizedBox(height: 40),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
@@ -79,9 +38,14 @@ class HomePage extends StatelessWidget {
                     "Trending News",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
+                  InkWell(
+                    onTap: () {
+                      Get.to(ArticlePage());
+                    },
+                    child: Text(
+                      "See All",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                   ),
                 ],
               ),
@@ -104,10 +68,11 @@ class HomePage extends StatelessWidget {
                                   onTap: () {
                                     Get.to(NewsDetailsPage(news: e));
                                   },
+                                  name: getInitial(e.author),
 
                                   imageUrl:
                                       e.urlToImage ??
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                      'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
                                   title: e.title ?? 'No Title',
                                   tag: e.source?.name ?? 'Trending',
                                   time: e.publishedAt!,
@@ -127,9 +92,14 @@ class HomePage extends StatelessWidget {
                     "News For you",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
+                  InkWell(
+                    onTap: () {
+                      Get.to(ArticlePage());
+                    },
+                    child: Text(
+                      "See All",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                   ),
                 ],
               ),
@@ -150,9 +120,11 @@ class HomePage extends StatelessWidget {
                                 onTap: () {
                                   Get.to(NewsDetailsPage(news: e));
                                 },
+                                name: getInitial(e.author),
+
                                 imageUrl:
                                     e.urlToImage ??
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                    'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
 
                                 title: e.title ?? 'No Title',
 
@@ -172,9 +144,14 @@ class HomePage extends StatelessWidget {
                     "Apple News",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
+                  InkWell(
+                    onTap: () {
+                      Get.to(ArticlePage());
+                    },
+                    child: Text(
+                      "See All",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                   ),
                 ],
               ),
@@ -195,9 +172,11 @@ class HomePage extends StatelessWidget {
                                 onTap: () {
                                   Get.to(NewsDetailsPage(news: e));
                                 },
+                                name: getInitial(e.author),
+
                                 imageUrl:
                                     e.urlToImage ??
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                    'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
 
                                 title: e.title ?? 'No Title',
 
@@ -218,9 +197,14 @@ class HomePage extends StatelessWidget {
                     "Business News",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
+                  InkWell(
+                    onTap: () {
+                      Get.to(ArticlePage());
+                    },
+                    child: Text(
+                      "See All",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                   ),
                 ],
               ),
@@ -243,10 +227,11 @@ class HomePage extends StatelessWidget {
                                   onTap: () {
                                     Get.to(NewsDetailsPage(news: e));
                                   },
+                                  name: getInitial(e.author),
 
                                   imageUrl:
                                       e.urlToImage ??
-                                      'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                      'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
                                   title: e.title ?? 'No Title',
                                   tag: e.source?.name ?? 'Trending',
                                   time: e.publishedAt!,
@@ -265,9 +250,14 @@ class HomePage extends StatelessWidget {
                     "Wall Street News",
                     style: Theme.of(context).textTheme.bodyLarge,
                   ),
-                  Text(
-                    "See All",
-                    style: Theme.of(context).textTheme.labelSmall,
+                  InkWell(
+                    onTap: () {
+                      Get.to(ArticlePage());
+                    },
+                    child: Text(
+                      "See All",
+                      style: Theme.of(context).textTheme.labelSmall,
+                    ),
                   ),
                 ],
               ),
@@ -288,9 +278,11 @@ class HomePage extends StatelessWidget {
                                 onTap: () {
                                   Get.to(NewsDetailsPage(news: e));
                                 },
+                                name: getInitial(e.author),
+
                                 imageUrl:
                                     e.urlToImage ??
-                                    'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSUPP5v7GhhLjxApeK9WZyXXd8Jc7KlvK_PyQ&s',
+                                    'https://media.istockphoto.com/id/1369150014/vector/breaking-news-with-world-map-background-vector.jpg?s=612x612&w=0&k=20&c=9pR2-nDBhb7cOvvZU_VdgkMmPJXrBQ4rB1AkTXxRIKM=',
 
                                 title: e.title ?? 'No Title',
 
@@ -301,10 +293,18 @@ class HomePage extends StatelessWidget {
                             .toList(),
                       ),
               ),
+             SizedBox(height: 66),
             ],
           ),
         ),
       ),
     );
   }
+}
+
+String getInitial(String? author) {
+  if (author == null || author.isEmpty) {
+    return "?"; // fallback character
+  }
+  return author[0];
 }
