@@ -22,6 +22,8 @@ It features trending news, Apple news, Wall Street updates, and more – all wit
 📷 Screenshots
 
 ![NewsApp](https://github.com/user-attachments/assets/c13455e6-46fc-4618-8975-14567e062838)
+![download](https://github.com/user-attachments/assets/719f1445-d514-4194-91c5-4e4aaf456d35)
+
 
 🚀 Getting Started
 1️⃣ Clone repo
