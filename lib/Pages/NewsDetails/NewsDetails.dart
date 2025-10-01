@@ -79,11 +79,13 @@ class NewsDetailsPage extends StatelessWidget {
                       backgroundColor: Colors.red,
                     ),
                     SizedBox(width: 10),
-                    Text(
-                      news.author ?? "Usman Khalid",
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: Theme.of(context).colorScheme.secondaryContainer,
+                    Flexible(
+                      child: Text(
+                        news.author ?? "Usman Khalid",
+                        style: TextStyle(
+                          fontSize: 18,
+                          color: Theme.of(context).colorScheme.secondaryContainer,
+                        ),
                       ),
                     ),
                     SizedBox(height: 10),
