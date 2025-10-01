@@ -19,10 +19,19 @@ It features trending news, Apple news, Wall Street updates, and more – all wit
 
 🛠️ Built with Flutter + GetX state management
 
-📷 Screenshots
+## 📷 Screenshots  
 
-![NewsApp](https://github.com/user-attachments/assets/c13455e6-46fc-4618-8975-14567e062838)
-![download](https://github.com/user-attachments/assets/719f1445-d514-4194-91c5-4e4aaf456d35)
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/c13455e6-46fc-4618-8975-14567e062838" alt="NewsApp" width="300" style="margin-right: 20px;"/>
+  
+  <a href="https://github.com/Usman-bin-Khalid/News_App_Complete-Frontend-Backend-API-/releases/download/1.0.0/News.App.apk">
+    <img src="https://github.com/user-attachments/assets/719f1445-d514-4194-91c5-4e4aaf456d35" alt="Download APK" width="300"/>
+  </a>
+</p>
+
+<p align="center">
+  👉 Tap the second image to <a href="https://github.com/Usman-bin-Khalid/News_App_Complete-Frontend-Backend-API-/releases/download/1.0.0/News.App.apk"><b>Download APK</b></a> 📥
+</p>
 
 
 🚀 Getting Started
